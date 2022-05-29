@@ -23,8 +23,8 @@ require("./config/passport")(passport);
 // this is used to set static folder
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.get('/', (req,res) => {
-  res.sendFile(path.join(__dirname, '/index.html'));
+app.get('/home', (req,res) => {
+  res.sendFile(path.join(__dirname, 'home.html'));
 });
 
 let port = process.env.PORT;
