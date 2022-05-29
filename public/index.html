@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ketflix</title>
+	<link rel="stylesheet" type="text/css" href="./css/login.css">
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="container" id="container">
+    <script>
+        const uIDD = localStorage.getItem('userID');
+
+if(uIDD){
+    window.location.replace('http://localhost:3000/home.html');
+}else{
+    // console.log('UID not found');
+}
+    </script>
+	<div class="form-container sign-up-container">
+		<form action="#">
+			<h1>Create Account</h1>
+			<input id="uname" type="text" placeholder="Name" />
+			<input id="semail" type="email" placeholder="Email" />
+			<input id="spassword" type="password" placeholder="Password" />
+			<button onclick="onSignup()">Sign Up</button>
+		</form>
+	</div>
+	<div class="form-container sign-in-container">
+		<form action="#">
+			<h1>Log In</h1>
+			<input id="lemail" type="email" placeholder="Email" />
+			<input id="lpassword" type="password" placeholder="Password" />
+			<button onclick="onLogin()">Log In</button>
+		</form>
+	</div>
+	<div class="overlay-container">
+		<div class="overlay">
+			<div class="overlay-panel overlay-left">
+				<h1>Ketflix</h1>
+				<p>Happy to see you again. Please login to enjoy awesome recommendations!</p>
+				<button class="ghost" id="signIn">Log In Instead</button>
+			</div>
+			<div class="overlay-panel overlay-right">
+				<h1>Ketflix</h1>
+				<p>Create a free account and get started!</p>
+				<button class="ghost" id="signUp">Create New Account</button>
+			</div>
+		</div>
+	</div>
+</div>
+    <script src="./scripts/login.js"></script>
+	<script src="./scripts/script.js"></script>
+</body>
+</html>
