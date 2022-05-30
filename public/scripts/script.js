@@ -2,11 +2,11 @@ var rr = 0;
 
 function logout() {
     window.localStorage.removeItem("userID");
-    window.location.replace('https://ketflix-mvr.herokuapp.com/index.html');
+    window.location.replace('http://localhost:3000/index.html');
 }
 
 async function onSignup() {
-    var url = 'https://ketflix-mvr.herokuapp.com/adduser';
+    var url = 'http://localhost:3000/adduser';
      await fetch(url, {
      method: 'POST',
      headers: {
@@ -21,7 +21,7 @@ async function onSignup() {
      console.log(completeData);
        if(completeData['success']){
         window.localStorage.setItem("userID", completeData['userID']);
-        window.location.replace('https://ketflix-mvr.herokuapp.com/home.html');
+        window.location.replace('http://localhost:3000/home.html');
        } else {
         window.alert(completeData['msz']);
        }
@@ -34,7 +34,7 @@ async function onSignup() {
 
 
 async function onLogin() {
-   var url = 'https://ketflix-mvr.herokuapp.com/authenticate';
+   var url = 'http://localhost:3000/authenticate';
    await fetch(url, {
     method: 'POST',
     headers: {
@@ -59,7 +59,7 @@ async function onLogin() {
 }
 
 async function movieWatched(mov) {
-    var url = 'https://ketflix-mvr.herokuapp.com/moviewatched';
+    var url = 'http://localhost:3000/moviewatched';
     console.log('vvv'+ window.localStorage.getItem("userID") + mov)
     await fetch(url, {
             method: 'POST',
@@ -85,7 +85,7 @@ async function rateMovie(mov,rev) {
     var uuID = window.localStorage.getItem("userID");
     console.log('uuid'+uuID+ " " + mov +  " " + rev);
     // var userReviews = window.localStorage.getItem("reviews");
-    var url = 'https://ketflix-mvr.herokuapp.com/reviewmovie';
+    var url = 'http://localhost:3000/reviewmovie';
     await fetch(url, {
             method: 'POST',
             headers: {
@@ -112,7 +112,7 @@ async function rateMovie(mov,rev) {
 }
 
 async function onContentBased(movName) {
-    var url = 'https://ketflix-mvr.herokuapp.com/contentbased?mName='+ movName;
+    var url = 'http://localhost:3000/contentbased?mName='+ movName;
     await fetch(url).then((data)=>{
         console.log(data);
         return data.json();
@@ -147,7 +147,7 @@ async function onContentBased(movName) {
 }
 
 async function onSearch() {
-    var url = 'https://ketflix-mvr.herokuapp.com/contentbased?mName='+ document.getElementById("mName").value;
+    var url = 'http://localhost:3000/contentbased?mName='+ document.getElementById("mName").value;
     await fetch(url).then((data)=>{
         console.log(data);
         return data.json();
@@ -186,7 +186,7 @@ async function onSearch() {
 
 async function onGetUser() {
   console.log('0 '+ window.localStorage.getItem('userID'));
-    var url = 'https://ketflix-mvr.herokuapp.com/getuserinfo?userID='+window.localStorage.getItem('userID');
+    var url = 'http://localhost:3000/getuserinfo?userID='+window.localStorage.getItem('userID');
     await fetch(url).then((data)=>{
         return data.json();
     }).then((completeData)=>{
@@ -216,7 +216,7 @@ async function onGetUser() {
 }
 
 async function onGenreSearch(gne) {
-    var url = 'https://ketflix-mvr.herokuapp.com/genrebased?genre='+gne;
+    var url = 'http://localhost:3000/genrebased?genre='+gne;
     await fetch(url).then((data)=>{
         return data.json();
     }).then((completeData)=>{
@@ -244,7 +244,7 @@ async function onGenreSearch(gne) {
 }
 
 async function onCollaborativeSearch() {
-    var url = 'https://ketflix-mvr.herokuapp.com/collaborative?userID='+window.localStorage.getItem("userID");
+    var url = 'http://localhost:3000/collaborative?userID='+window.localStorage.getItem("userID");
     await fetch(url).then((data)=>{
         return data.json();
     }).then((completeData)=>{
