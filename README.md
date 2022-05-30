@@ -1,5 +1,5 @@
 <h1 align="center">Movie Recommendation System - Ketflix</h1>
-<h3>As deployment is currently not showing proper results, please clone the repository and it will work as I've shown in demo video.</h3>
+<h3>As deployment is currently not showing proper results, please clone the repository and run on localhost and it will work as I've shown in demo video.</h3>
 <a href="https://youtu.be/7qiU-Ouee6A">Click here for watching the youtube video of the same</a><br><br>
 <a href="https://ketflix-mvr.herokuapp.com"> Click here but this deployment only shows UI not functional features</a>
 
