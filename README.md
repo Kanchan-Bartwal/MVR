@@ -1,5 +1,5 @@
 <h1 align="center">Movie Recommendation System - Ketflix</h1>
-
+As deployment is currently not showing proper results go on to clone and run to local host
 <a href="https://ketflix-mvr.herokuapp.com"> Click here to see deployment</a>
 
 ### Instructions to use app. [Use on full screen for best experience]
