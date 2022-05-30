@@ -9,10 +9,10 @@ const router = express.Router();
 router.post('/adduser', authenticate_action.addNew);
 
 // POST / Authenticating User(LOG IN)
-router.post('/authenticate', authenticate_action.authenticate); 
+router.post('/authenticate', authenticate_action.authenticate);
 
 // GET / Getting User Information
-router.get('/getuserinfo', user_action.getUserInfo);
+router.post('/getuserinfo', user_action.getUserInfo);
 
 // POST / Posting The Movie That User Watched
 router.post('/moviewatched', user_action.watchingMovie);
@@ -21,12 +21,12 @@ router.post('/moviewatched', user_action.watchingMovie);
 router.post('/reviewmovie', user_action.reviewingMovie);
 
 // GET / Content-Based Recommendation
-router.get('/contentbased', recommend_action.contentbased);
+router.post('/contentbased', recommend_action.contentbased);
 
 // GET / Collaborative Recommendation
-router.get('/collaborative', recommend_action.collaborative);
+router.post('/collaborative', recommend_action.collaborative);
 
 // GET / Genre-Based Recommendation
-router.get('/genrebased', recommend_action.genresBased);
+router.post('/genrebased', recommend_action.genresBased);
 
 module.exports = router;

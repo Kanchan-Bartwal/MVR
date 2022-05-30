@@ -3,7 +3,7 @@ const UserInfo = require("../models/user_info");
 
 var functions = {
     getUserInfo: function(req,res){
-        var obj = req.query;
+        var obj = req.body;
         UserInfo.find({
             userID: obj.userID
         }, function(err,userinfo){
@@ -12,14 +12,14 @@ var functions = {
                 msz: "Failed to Save"
             });}
                 else if(!userinfo){
-                    return res.send({success: false, msz:"No UserInfo Found"});                  
+                    return res.send({success: false, msz:"No UserInfo Found"});
                 }
                 else{
                     if(userinfo.length === 0){
                         return res.send({success: false, msz:"No UserInfo Found"});
                     }
                     else{
-                        return res.send({success: true, msz: userinfo}); 
+                        return res.send({success: true, msz: userinfo});
                 }}
         });
     },
@@ -75,10 +75,10 @@ var functions = {
             msz: "Successfully Saved"
         });
     }
-    });      
-        
-      
-    
+    });
+
+
+
     }
 }
 

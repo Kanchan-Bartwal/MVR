@@ -9,7 +9,7 @@ var movieNameArr = ['Flirting with Disaster','Hostel', 'Pi', 'Better Luck Tomorr
 var moviePosterArr = ['https://image.tmdb.org/t/p/w500//sRRdVLuxk8OLCDRd4u4xDrDdwv7.jpg','https://image.tmdb.org/t/p/w500//dDrtuWUKhgUGp12kgUWuP0NpTdF.jpg','https://image.tmdb.org/t/p/w500//smMlzrjGVYfL6BWeTL04KIJpf8b.jpg','https://image.tmdb.org/t/p/w500//alJULQQnuiYXjgVmj2EYgwXOcIn.jpg'];
 var functions = {
     contentbased: function(req,res){
-        var obj = req.query;
+        var obj = req.body;
         var dataToSend;
   // spawn new child process to call the python script
   const python = spawn('python', ['python_scripts/content_based.py', obj.mName]);
@@ -47,8 +47,8 @@ var functions = {
   });
     },
     collaborative: function(req,res){
-      
-        var obj = req.query;
+
+        var obj = req.body;
         var dataToSend;
 
         UserInfo.find({
@@ -56,7 +56,7 @@ var functions = {
       }, function(err,userinfo){
           if(err) throw err;
               if(!userinfo){
-                  return res.send({success: false, msz:"No UserInfo Found"});                  
+                  return res.send({success: false, msz:"No UserInfo Found"});
               }
               else{
                   if(userinfo.length === 0){
@@ -66,7 +66,7 @@ var functions = {
                     let s;
                     var arr = [];
                     for(s=0;s<userinfo[0]['reviews'].length;s++){
-                      
+
                       arr.push({
                         "movie": userinfo[0]['reviews'][s].movie,
                         "review": userinfo[0]['reviews'][s].review
@@ -75,7 +75,7 @@ var functions = {
                     // spawn new child process to call the python script
   const python = spawn('python', ['python_scripts/collaborative.py', JSON.stringify(arr)]);//userinfo[0]['reviews']]);
   // collect data from script
-  
+
   python.stdout.on('data', function (data) {
    console.log('Pipe data from python script ...');
    console.log("vf" +data);
@@ -114,10 +114,10 @@ console.log("FFF" + dataToSend);
   });
               }}
       });
-    
+
     },
     genresBased: function(req,res){
-      var obj = req.query;
+      var obj = req.body;
       var dataToSend;
       var mName;
       if(obj.genre == "action"){

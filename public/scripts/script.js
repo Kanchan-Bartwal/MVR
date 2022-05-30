@@ -112,11 +112,17 @@ async function rateMovie(mov,rev) {
 }
 
 async function onContentBased(movName) {
-    var url = '/contentbased?mName='+ movName;
-    await fetch(url).then((data)=>{
-        console.log(data);
-        return data.json();
-    }).then((completeData)=>{
+  var url = '/contentbased';
+ await fetch(url, {
+  method: 'POST',
+  headers: {
+    'Accept': 'application/json',
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({mName: movName})
+}).then((data) => {
+  return data.json();
+ }).then((completeData)=>{
         let data1="";
         let i;
         for(i=0;i<completeData['movieName'].length;i++){
@@ -145,11 +151,17 @@ async function onContentBased(movName) {
 }
 
 async function onSearch() {
-    var url = '/contentbased?mName='+ document.getElementById("mName").value;
-    await fetch(url).then((data)=>{
-        console.log(data);
-        return data.json();
-    }).then((completeData)=>{
+  var url = '/contentbased';
+ await fetch(url, {
+  method: 'POST',
+  headers: {
+    'Accept': 'application/json',
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({mName: document.getElementById("mName").value})
+}).then((data) => {
+  return data.json();
+ }).then((completeData)=>{
         let data1="";
         let i;
         for(i=0;i<completeData['movieName'].length;i++){
@@ -182,10 +194,17 @@ async function onSearch() {
 
 async function onGetUser() {
   console.log('0 '+ window.localStorage.getItem('userID'));
-    var url = '/getuserinfo?userID='+window.localStorage.getItem('userID');
-    await fetch(url).then((data)=>{
-        return data.json();
-    }).then((completeData)=>{
+  var url = '/getuserinfo';
+   await fetch(url, {
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({userID: window.localStorage.getItem('userID')})
+  }).then((data) => {
+    return data.json();
+   }).then((completeData)=>{
         onGenreSearch('best');
         console.log("dd" + completeData['msz'][0]);
         if(typeof completeData['msz'][0]['reviews'] !== 'undefined'){
@@ -212,13 +231,21 @@ async function onGetUser() {
 }
 
 async function onGenreSearch(gne) {
-    var url = '/genrebased?genre='+gne;
-    await fetch(url).then((data)=>{
-        return data.json();
-    }).then((completeData)=>{
+  var url = '/genrebased';
+ await fetch(url, {
+  method: 'POST',
+  headers: {
+    'Accept': 'application/json',
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({genre: gne})
+}).then((data) => {
+  return data.json();
+ }).then((completeData)=>{
         console.log("Afs"+completeData['movieName']);
         let data1="";
         let i;
+        console.log("a" +completeData);
         let data0=`<div class="card">${gne.toUpperCase()} Movies</div>`
         for(i=0;i<completeData['movieName'].length;i++){
                 data1+= `<li>
@@ -240,10 +267,17 @@ async function onGenreSearch(gne) {
 }
 
 async function onCollaborativeSearch() {
-    var url = '/collaborative?userID='+window.localStorage.getItem("userID");
-    await fetch(url).then((data)=>{
-        return data.json();
-    }).then((completeData)=>{
+  var url = '/collaborative';
+ await fetch(url, {
+  method: 'POST',
+  headers: {
+    'Accept': 'application/json',
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({userID: window.localStorage.getItem("userID")})
+}).then((data) => {
+  return data.json();
+ }).then((completeData)=>{
         console.log("As"+completeData['movieName']);
         let data1="";
         let i;
