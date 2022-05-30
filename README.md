@@ -1,7 +1,6 @@
 <h1 align="center">Movie Recommendation System - Ketflix</h1>
 
-### Instructions to use app.
-<h3>Use on full screen for best experience</h3>
+### Instructions to use app. [Use on full screen for best experience]
 The account used in demo:- <br>
 <strong>email: kanchanbartwal@gmail.com <br>
   password:- 111</strong>
