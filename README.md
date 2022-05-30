@@ -1,12 +1,15 @@
 <h1 align="center">Movie Recommendation System - Ketflix</h1>
 
+<a href="https://ketflix-mvr.herokuapp.com"> Click here to see deployment</a>
+
 ### Instructions to use app. [Use on full screen for best experience]
 1) The account used in demo:- <br>
 <strong>email: kanchanbartwal@gmail.com <br>
-  password:- 111</strong>
+  password:- 111</strong> <a href="https://ketflix-mvr.herokuapp.com"> Click here to see Website</a>
 2) <strong>If the deployed site gives application error on running, please clone the repository and run with localhost. <br>
 3) Also if on running on localhost, it gives minor alerts like localhost says an error occured, simply click ok and repeat what you were doing, it would definately run on the second go.(It is due to different node versions installed on different devices.)</strong>
   
+  <a href="https://ketflix-mvr.herokuapp.com"> Click here to see Website</a>
 ### Introduction & Research Phase
 After getting selection mail from Microsoft, I immediately started examining the three project choices given there. As I was new to Machine Learning, I started the basics of ML from youtube. Being a quick & consistent learner, I was able to catch up and started researching. As per my research, we have 3 algorithms, content-based filtering (based on the likings of a particular user), collaborative filtering (based on the mindset of similar users and their activities), and a hybrid of both of them.
 
@@ -26,6 +29,8 @@ When I was confident to start the project, I started searching for relevant data
 
 Later on discussing the same with my mentor, he told me that it is a very common and one of the major problems and is called COLD START.
 
+<a href="https://ketflix-mvr.herokuapp.com"> Click here to see Website</a>
+
 ### Initialization
 I decided starting with content based filtering. I firstly filtered the essential features from data and dropped the less important ones. Then I manipulated the data set as per my requirements to form suitable tags for a movie. Moving on I managed to find the similarity matrics for the movie and then using some sort of vectorization to find the nearby vector movies to build the content based filtering. 
 
@@ -38,6 +43,8 @@ Also collaboartive filtering gave me a major headache, but it was worth it.
 
 ### Final Challenges
 For me, integrating the frontend and backend had my nights holding my head. I felt low at times but eventually I didn't give up. Debugging the errors for 5-6 hours straight for some days got me the better results.
+
+<a href="https://ketflix-mvr.herokuapp.com"> Click here to see Website</a>
 
 ### My takeaways from this program
 () Working with a scheduled plan = Planning <br>
