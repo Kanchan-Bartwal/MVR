@@ -1,38 +1,27 @@
-function create_UUID(){
-  var dt = new Date().getTime();
-  var uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
-      var r = (dt + Math.random()*16)%16 | 0;
-      dt = Math.floor(dt/16);
-      return (c=='x' ? r :(r&0x3|0x8)).toString(16);
-  });
-  return uuid;
-}
 var rr = 0;
 
 function logout() {
     window.localStorage.removeItem("userID");
-    window.location.replace('http://localhost:3000/index.html');
+    window.location.replace('https://ketflix-mvr.herokuapp.com/index.html');
 }
 
 async function onSignup() {
-    var url = 'http://localhost:3000/adduser';
-    var newUserID = create_UUID();
+    var url = 'https://ketflix-mvr.herokuapp.com/adduser';
      await fetch(url, {
      method: 'POST',
      headers: {
        'Accept': 'application/json',
        'Content-Type': 'application/json'
      },
-     body: JSON.stringify({email: document.getElementById("semail").value, password: document.getElementById("spassword").value, name: document.getElementById("uname").value, userID: newUserID})
+     body: JSON.stringify({email: document.getElementById("semail").value, password: document.getElementById("spassword").value, name: document.getElementById("uname").value})
    }).then((data) => {
     return data.json();
    })
    .then((completeData)=>{
      console.log(completeData);
        if(completeData['success']){
-         afterLogin(document.getElementById("semail").value,document.getElementById("spassword").value)
-        // window.localStorage.setItem("userID", newUserID);
-        // window.location.replace('http://localhost:3000/home.html');
+        window.localStorage.setItem("userID", completeData['userID']);
+        window.location.replace('https://ketflix-mvr.herokuapp.com/home.html');
        } else {
         window.alert(completeData['msz']);
        }
@@ -43,32 +32,9 @@ async function onSignup() {
 });
  }
 
- async function afterLogin(ema,pas) {
-  var url = 'http://localhost:3000/authenticate';
-  await fetch(url, {
-   method: 'POST',
-   headers: {
-     'Accept': 'application/json',
-     'Content-Type': 'application/json'
-   },
-   body: JSON.stringify({email: ema, password: pas})
- }).then((data) => {
-   return data.json();
-  }).then((completeData)=>{
-      if(completeData['success']){
-       window.localStorage.setItem("userID", completeData['userID']);
-       window.location.replace('http://localhost:3000/home.html');
-      } else {
-       window.alert(completeData['msz']);
-      }
-}).catch((err)=>{
-   console.log(err);
-   window.alert('An Error Occuured');
-});
-}
 
 async function onLogin() {
-   var url = 'http://localhost:3000/authenticate';
+   var url = 'https://ketflix-mvr.herokuapp.com/authenticate';
    await fetch(url, {
     method: 'POST',
     headers: {
@@ -80,8 +46,9 @@ async function onLogin() {
     return data.json();
    }).then((completeData)=>{
        if(completeData['success']){
+         console.log(completeData['userID']);
         window.localStorage.setItem("userID", completeData['userID']);
-        window.location.replace('http://localhost:3000/home.html');
+        window.location.replace('/home.html');
        } else {
         window.alert(completeData['msz']);
        }
@@ -92,7 +59,7 @@ async function onLogin() {
 }
 
 async function movieWatched(mov) {
-    var url = 'http://localhost:3000/moviewatched';
+    var url = 'https://ketflix-mvr.herokuapp.com/moviewatched';
     console.log('vvv'+ window.localStorage.getItem("userID") + mov)
     await fetch(url, {
             method: 'POST',
@@ -114,10 +81,11 @@ async function movieWatched(mov) {
 }
 
 async function rateMovie(mov,rev) {
+
     var uuID = window.localStorage.getItem("userID");
     console.log('uuid'+uuID+ " " + mov +  " " + rev);
     // var userReviews = window.localStorage.getItem("reviews");
-    var url = 'http://localhost:3000/reviewmovie';
+    var url = 'https://ketflix-mvr.herokuapp.com/reviewmovie';
     await fetch(url, {
             method: 'POST',
             headers: {
@@ -128,25 +96,30 @@ async function rateMovie(mov,rev) {
           }).then((data) => {
            return data.json();
           }).then((completeData)=>{
-              if(completeData['success']){
-                onCollaborativeSearch();
-                            } else {
-                window.alert(completeData['msz']);
-              }
-       }).catch((err)=>{
+            console.log(completeData['msz']);
+              // if(completeData['success']){
+              //   onCollaborativeSearch();
+              //               } else {
+              //   window.alert(completeData['msz']);
+              // }
+       })
+       .catch((err)=>{
+
            console.log(err);
-           window.alert('An Error Occuured');
-       });
+          //  window.alert('An Error Occuured' + err);
+       })
+       ;
 }
 
 async function onContentBased(movName) {
-    var url = 'http://localhost:3000/contentbased?mName='+ movName;
+    var url = 'https://ketflix-mvr.herokuapp.com/contentbased?mName='+ movName;
     await fetch(url).then((data)=>{
         console.log(data);
         return data.json();
     }).then((completeData)=>{
         let data1="";
         let i;
+        if(typeof completeData['movieName'] !== 'undefined'){
         for(i=0;i<completeData['movieName'].length;i++){
                 data1+= `<li>
                 <div id="smodal${i}" onclick="showModal('s${i}','smodal${i}','${completeData['movieName'][i]}','${completeData['moviePoster'][i]}')" class="movie-card">
@@ -163,6 +136,7 @@ async function onContentBased(movName) {
                 break;
               }
         }
+      }
         document.getElementById('contentbased').innerHTML=data1;
         document.getElementById("content-default").style.display="none";
 
@@ -173,13 +147,14 @@ async function onContentBased(movName) {
 }
 
 async function onSearch() {
-    var url = 'http://localhost:3000/contentbased?mName='+ document.getElementById("mName").value;
+    var url = 'https://ketflix-mvr.herokuapp.com/contentbased?mName='+ document.getElementById("mName").value;
     await fetch(url).then((data)=>{
         console.log(data);
         return data.json();
     }).then((completeData)=>{
         let data1="";
         let i;
+        if(typeof completeData['movieName'] !== 'undefined'){
         for(i=0;i<completeData['movieName'].length;i++){
                 data1+= `<li>
             <div id="cmodal${i}" onclick="showModal('c${i}','cmodal${i}','${completeData['movieName'][i]}','${completeData['moviePoster'][i]}')" class="movie-card">
@@ -195,6 +170,7 @@ async function onSearch() {
             break;
           }
         }
+      }
         document.getElementById('searchbased').innerHTML=`<ul class="movies-list">`+data1+`</ul>`;
         document.getElementById('search-section').className="upcoming";
         document.getElementById('head-section').className="inactive";
@@ -209,27 +185,38 @@ async function onSearch() {
 }
 
 async function onGetUser() {
-    var url = 'http://localhost:3000/getuserinfo?userID='+window.localStorage.getItem('userID');
+  console.log('0 '+ window.localStorage.getItem('userID'));
+    var url = 'https://ketflix-mvr.herokuapp.com/getuserinfo?userID='+window.localStorage.getItem('userID');
     await fetch(url).then((data)=>{
         return data.json();
     }).then((completeData)=>{
         onGenreSearch('best');
         console.log("dd" + completeData['msz'][0]);
+        if(typeof completeData['msz'][0]['reviews'] !== 'undefined'){
         if(completeData['msz'][0]['reviews'].length !== 0){
         onCollaborativeSearch();
         }
+      } else {
+        console.log("1 " + completeData['msz']);
+      }
+      if(typeof completeData['msz'][0]['movieWatched'] !== 'undefined'){
         if(completeData['msz'][0]['movieWatched'].length !== 0){
           var lenn = completeData['msz'][0]['movieWatched'].length;
             onContentBased(completeData['msz'][0]['movieWatched'][lenn-1]);
             }
+          } else {
+            console.log("2 " +completeData['msz'][0]);
+          }
     }).catch((err)=>{
-      /*window.alert('An Error Occuured');*/
-      logout();
+      console.log(err);
+
+      window.alert('An Error Occuured');
+      // logout();
     });
 }
 
 async function onGenreSearch(gne) {
-    var url = 'http://localhost:3000/genrebased?genre='+gne;
+    var url = 'https://ketflix-mvr.herokuapp.com/genrebased?genre='+gne;
     await fetch(url).then((data)=>{
         return data.json();
     }).then((completeData)=>{
@@ -257,14 +244,14 @@ async function onGenreSearch(gne) {
 }
 
 async function onCollaborativeSearch() {
-    var url = 'http://localhost:3000/collaborative?userID='+window.localStorage.getItem("userID");
+    var url = 'https://ketflix-mvr.herokuapp.com/collaborative?userID='+window.localStorage.getItem("userID");
     await fetch(url).then((data)=>{
         return data.json();
     }).then((completeData)=>{
         console.log("As"+completeData['movieName']);
         let data1="";
         let i;
-
+        if(typeof completeData['movieName'] !== 'undefined'){
         for(i=0;i<completeData['movieName'].length;i++){
             data1+= `<li>
             <div id="omodal${i}" onclick="showModal('o${i}','omodal${i}','${completeData['movieName'][i]}','${completeData['moviePoster'][i]}')" class="movie-card">
@@ -280,6 +267,7 @@ async function onCollaborativeSearch() {
             break;
           }
     }
+  }
         document.getElementById('collaborative').innerHTML=data1;
         document.getElementById("collab-default").style.display="none";
     }).catch((err)=>{

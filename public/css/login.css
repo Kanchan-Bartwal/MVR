@@ -58,6 +58,7 @@ button {
 	letter-spacing: 1px;
 	text-transform: uppercase;
 	transition: transform 80ms ease-in;
+	cursor: pointer;
 }
 
 button:active {
@@ -112,6 +113,10 @@ input {
 }
 
 .sign-in-container {
+	position: absolute;
+	top: 0;
+	height: 100%;
+	transition: all 0.6s ease-in-out;
 	left: 0;
 	width: 50%;
 	z-index: 2;

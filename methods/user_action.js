@@ -7,8 +7,11 @@ var functions = {
         UserInfo.find({
             userID: obj.userID
         }, function(err,userinfo){
-            if(err) throw err;
-                if(!userinfo){
+            if(err) {return res.json({
+                success: false,
+                msz: "Failed to Save"
+            });}
+                else if(!userinfo){
                     return res.send({success: false, msz:"No UserInfo Found"});                  
                 }
                 else{

@@ -137,7 +137,7 @@ console.log("FFF" + dataToSend);
       } else if(obj.genre == "sci-fi") {
         mName = '20,000 Leagues Under the Sea';
       } else {
-        mName = 'Journey 2: The Mysterious Island';
+        mName = 'Mission: Impossible';
       }
 // spawn new child process to call the python script
 const python = spawn('python', ['python_scripts/content_based.py', mName]);

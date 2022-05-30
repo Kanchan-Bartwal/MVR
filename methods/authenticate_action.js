@@ -1,7 +1,7 @@
 const User = require("../models/user");
 const jwt = require("jwt-simple");
 const config = require("../config/dbconfig");
-const bcrypt = require("bcrypt"); 
+const bcrypt = require("bcryptjs"); 
 const user = require("../models/user");
 const UserInfo = require("../models/user_info");
 
@@ -22,8 +22,12 @@ var functions = {
             UserInfo.findOne({
                 email: req.body.email
             },function(err, user){
-                if(err) throw err;
-                if(!user){
+                if(err) {
+                    return res.json({
+                    success: false,
+                    msz: "Failed to Save"
+                });}
+                else if(!user){
                     newUser.save(function(err, newUser){
                         if(err){
                             return res.json({
@@ -33,7 +37,7 @@ var functions = {
                         }
                         else{
             var userinfo = new UserInfo({
-                userID: req.body.userID,
+                userID: newUser["_id"],
                 name: req.body.name,
                 email: req.body.email,
                 movieWatched: [],
@@ -50,6 +54,7 @@ var functions = {
                             return res.json({
                                 success: true,
                                 msz: "Successfully Saved",
+                                userID: newUser["_id"]
                             });
                                         }
             });
@@ -69,8 +74,13 @@ var functions = {
         User.findOne({
             email: req.body.email
         },function(err, user){
-            if(err) throw err;
-            if(!user){
+            if(err) {
+                return res.json({
+                    success: false,
+                    msz: "Failed to Save"
+                });
+            }
+            else if(!user){
                 res.send({success: false, msz:"Authentication Failed,User Not Found"});
             }
             else{
