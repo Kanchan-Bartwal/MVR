@@ -1,5 +1,7 @@
 <h1 align="center">Movie Recommendation System - Ketflix</h1>
 
+<a href="https://ketflix-mvr.herokuapp.com"> Click here to see deployment</a>
+
 ### Instructions to use app. [Use on full screen for best experience]
 1) The account used in demo:- <br>
 <strong>email: kanchanbartwal@gmail.com <br>
