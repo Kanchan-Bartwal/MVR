@@ -2,8 +2,7 @@
 The account used in demo:- <br>
 <strong>email: kanchanbartwal@gmail.com <br>
   password:- 111</strong>
-
-<br><br>
+<br>
 <strong>If the deployed site gives error on opening, please do so with localhost. <br>
 Also if on running on localhost, it gives minor alerts like localhost says an error occured, simply click ok and repeat what you were doing,it would definately run on the second go, also it is due to different node versions installed on different devices.</strong>
   
