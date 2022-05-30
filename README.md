@@ -1,4 +1,5 @@
 <h1 align="center">Movie Recommendation System - Ketflix</h1>
+To check up the already existing account:- <strong>email: kanchanbartwal@gmail.com  password:- 111</strong>
   
 ### Introduction & Research Phase
 After getting selection mail from Microsoft, I immediately started examining the three project choices given there. As I was new to Machine Learning, I started the basics of ML from youtube. Being a quick & consistent learner, I was able to catch up and started researching. As per my research, we have 3 algorithms, content-based filtering (based on the likings of a particular user), collaborative filtering (based on the mindset of similar users and their activities), and a hybrid of both of them.
