@@ -74,7 +74,7 @@ button.ghost {
 	border-color: black;
 }
 
-form {
+#fome {
 	background-color: #181818;
 	display: flex;
 	align-items: center;
@@ -126,6 +126,7 @@ input {
 .container.right-panel-active .sign-in-container {
 	transform: translateX(100%);
 }
+
 
 .sign-up-container {
 	left: 0;
