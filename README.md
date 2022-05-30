@@ -5,7 +5,7 @@
 ### Instructions to use app. [Use on full screen for best experience]
 1) The account used in demo:- <br>
 <strong>email: kanchanbartwal@gmail.com <br>
-  password:- 111</strong>
+  password:- 111</strong> <a href="https://ketflix-mvr.herokuapp.com"> Click here to see Website</a>
 2) <strong>If the deployed site gives application error on running, please clone the repository and run with localhost. <br>
 3) Also if on running on localhost, it gives minor alerts like localhost says an error occured, simply click ok and repeat what you were doing, it would definately run on the second go.(It is due to different node versions installed on different devices.)</strong>
   
