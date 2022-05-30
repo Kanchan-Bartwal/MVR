@@ -119,7 +119,6 @@ async function onContentBased(movName) {
     }).then((completeData)=>{
         let data1="";
         let i;
-        if(typeof completeData['movieName'] !== 'undefined'){
         for(i=0;i<completeData['movieName'].length;i++){
                 data1+= `<li>
                 <div id="smodal${i}" onclick="showModal('s${i}','smodal${i}','${completeData['movieName'][i]}','${completeData['moviePoster'][i]}')" class="movie-card">
@@ -136,7 +135,6 @@ async function onContentBased(movName) {
                 break;
               }
         }
-      }
         document.getElementById('contentbased').innerHTML=data1;
         document.getElementById("content-default").style.display="none";
 
@@ -154,7 +152,6 @@ async function onSearch() {
     }).then((completeData)=>{
         let data1="";
         let i;
-        if(typeof completeData['movieName'] !== 'undefined'){
         for(i=0;i<completeData['movieName'].length;i++){
                 data1+= `<li>
             <div id="cmodal${i}" onclick="showModal('c${i}','cmodal${i}','${completeData['movieName'][i]}','${completeData['moviePoster'][i]}')" class="movie-card">
@@ -170,7 +167,6 @@ async function onSearch() {
             break;
           }
         }
-      }
         document.getElementById('searchbased').innerHTML=`<ul class="movies-list">`+data1+`</ul>`;
         document.getElementById('search-section').className="upcoming";
         document.getElementById('head-section').className="inactive";
@@ -251,7 +247,7 @@ async function onCollaborativeSearch() {
         console.log("As"+completeData['movieName']);
         let data1="";
         let i;
-        if(typeof completeData['movieName'] !== 'undefined'){
+
         for(i=0;i<completeData['movieName'].length;i++){
             data1+= `<li>
             <div id="omodal${i}" onclick="showModal('o${i}','omodal${i}','${completeData['movieName'][i]}','${completeData['moviePoster'][i]}')" class="movie-card">
@@ -267,7 +263,6 @@ async function onCollaborativeSearch() {
             break;
           }
     }
-  }
         document.getElementById('collaborative').innerHTML=data1;
         document.getElementById("collab-default").style.display="none";
     }).catch((err)=>{
