@@ -1,14 +1,13 @@
 <h1 align="center">Movie Recommendation System - Ketflix</h1>
 <h3>As deployment is currently not showing proper results, please clone the repository and run on localhost and it will work as I've shown in demo video.</h3>
 <a href="https://youtu.be/7qiU-Ouee6A">Click here for watching the youtube video of the same</a><br><br>
-<a href="https://ketflix-mvr.herokuapp.com"> Click here but this deployment only shows UI not functional features</a>
+<a href="https://ketflix-mvr.herokuapp.com"> Click here but this deployment only shows UI not functional features. For functional features clone and run on local host.</a>
 
 ### Instructions to use app. [Use on full screen for best experience]
 1) The account used in demo:- <br>
 <strong>email: kanchanbartwal@gmail.com <br>
   password:- 111</strong>
 2) <strong>If the deployed site gives application error on running, please clone the repository and run with localhost. <br>
-3) Also if on running on localhost, it gives minor alerts like localhost says an error occured, simply click ok and repeat what you were doing, it would definately run on the second go.(It is due to different node versions installed on different devices.)</strong>
   
 ### Introduction & Research Phase
 After getting selection mail from Microsoft, I immediately started examining the three project choices given there. As I was new to Machine Learning, I started the basics of ML from youtube. Being a quick & consistent learner, I was able to catch up and started researching. As per my research, we have 3 algorithms, content-based filtering (based on the likings of a particular user), collaborative filtering (based on the mindset of similar users and their activities), and a hybrid of both of them.
